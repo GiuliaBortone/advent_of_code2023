@@ -15,6 +15,11 @@ describe("recover calibration value from single row", () => {
 
     expect(value).toBe(12)
   })
+  test("2 numbers in the middle of the word", () => {
+    const value = recoverCalibrationValueFromSingleRow("pqr3stu8vwx")
+
+    expect(value).toBe(38)
+  })
 })
 
 function calibrationValuesSum(input: string): number {
@@ -22,5 +27,10 @@ function calibrationValuesSum(input: string): number {
 }
 
 function recoverCalibrationValueFromSingleRow(input: string) {
-  return 12
+  const recoveredCalibrationDigits = Array.from(input).filter(isANumber)
+  return parseInt(recoveredCalibrationDigits.join(""))
+}
+
+function isANumber(character: string): boolean {
+  return !isNaN(parseInt(character))
 }
