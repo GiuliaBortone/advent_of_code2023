@@ -1,4 +1,6 @@
 import {GameSet} from "./gameSet";
+import {Game} from "./game"
+
 
 export class AcceptableGameIdentifier {
     private readonly redCubesLimit: number
@@ -11,7 +13,11 @@ export class AcceptableGameIdentifier {
         this.blueCubesLimit = blueCubesLimit
     }
 
-    public isAcceptable(gameSet: GameSet): boolean {
+    public isAcceptableSet(gameSet: GameSet): boolean {
         return gameSet.redCubes <= this.redCubesLimit && gameSet.greenCubes <= this.greenCubesLimit && gameSet.blueCubes <= this.blueCubesLimit
+    }
+
+    public isAcceptableGame(game: Game): boolean {
+        return game.getSets().every(set => this.isAcceptableSet(set))
     }
 }
