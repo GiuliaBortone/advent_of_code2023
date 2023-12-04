@@ -7,7 +7,7 @@ describe("find if a set is acceptable", () => {
         let gameSet: GameSet = {
             redCubes: 4,
             greenCubes: 0,
-            blueCuaddbes: 3
+            blueCubes: 3
         }
 
         expect(identifier.isAcceptable(gameSet)).toBe(true)
