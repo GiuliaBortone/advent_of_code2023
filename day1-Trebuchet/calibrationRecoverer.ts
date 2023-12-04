@@ -24,30 +24,30 @@ export function recoverCalibrationValueFromSingleRow(row: string): number {
 }
 
 function findFirstNumber(row: string) {
-    for (let i = 0; i < row.length; i++) {
-        let singleCharacter = row.charAt(i)
-        if (isANumber(singleCharacter)) {
-            return singleCharacter
-        }
 
-        let subString = row.substring(0, i + 1)
-        if (containsSpelledNumber(subString) != '') {
-            return digitDictionary[containsSpelledNumber(subString)]
+    for (let i = 0; i < row.length; i++) {
+        if (findEquivalent(row, row.substring(0, i + 1), i)) {
+            return findEquivalent(row, row.substring(0, i + 1), i)
         }
     }
 }
 
 function findLastNumber(row: string) {
     for (let i = row.length - 1; i >= 0; i--) {
-        let singleCharacter = row.charAt(i)
-        if (isANumber(singleCharacter)) {
-            return singleCharacter
+        if (findEquivalent(row, row.substring(i), i)) {
+            return findEquivalent(row, row.substring(i), i)
         }
+    }
+}
 
-        let subString = row.substring(i)
-        if (containsSpelledNumber(subString) != '') {
-            return digitDictionary[containsSpelledNumber(subString)]
-        }
+function findEquivalent(row: string, subString: string, index: number) {
+    let singleCharacter = row.charAt(index)
+    if (isANumber(singleCharacter)) {
+        return singleCharacter
+    }
+
+    if (containsSpelledNumber(subString) != '') {
+        return digitDictionary[containsSpelledNumber(subString)]
     }
 }
 
