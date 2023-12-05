@@ -1,13 +1,13 @@
 import {readFileSync} from "fs";
-import {EngineSchematic} from "../../day3-GearRatios/engineSchematic";
+import {EngineSchematics} from "../../day3-GearRatios/engineSchematics";
 import {InputParser} from "../../day3-GearRatios/inputParser";
 
 describe("parse input to engine schematic", () => {
     test("parse provided example", () => {
         const example = readFileSync('test/day3-GearRatios/example.txt', 'utf-8')
 
-        const engineSchematic: EngineSchematic = InputParser.translateToEngineSchematic(example)
+        const engineSchematic: EngineSchematics = InputParser.translateToEngineSchematic(example)
 
-        expect(engineSchematic.getLineAt(0)).toStrictEqual("467..114..")
+        expect(engineSchematic.getLineAt(0)).toStrictEqual(["4", "6", "7", ".", ".", "1", "1", "4", ".", "."])
     })
 })

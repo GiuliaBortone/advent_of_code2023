@@ -1,6 +1,6 @@
 import {readFileSync} from "fs";
 
-function sumOfAllEngineParts(engineSchematic: string) {
+function sumOfAllEngineParts(engineSchematicContent: string) {
     return 4361
 }
 

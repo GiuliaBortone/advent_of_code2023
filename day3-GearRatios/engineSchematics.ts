@@ -1,7 +1,7 @@
-export class EngineSchematic {
-    private readonly engineSchematicLines: string[];
+export class EngineSchematics {
+    private readonly engineSchematicLines: string[][];
 
-    constructor(engineSchematicLines: string[]) {
+    constructor(engineSchematicLines: string[][]) {
         this.engineSchematicLines = engineSchematicLines;
     }
 
