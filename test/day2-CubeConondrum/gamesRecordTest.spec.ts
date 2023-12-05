@@ -11,9 +11,8 @@ describe("find the sum of ids of acceptable games in a games record", () => {
             "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red\n" +
             "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"
 
-        const games: Game[] = InputParser.translateToGames(input)
+        const gamesRecord: GamesRecord = InputParser.translateToGamesRecord(input)
 
-        const gamesRecord: GamesRecord = new GamesRecord(games)
         let identifier: AcceptableGameIdentifier = new AcceptableGameIdentifier(12, 13, 14)
 
         expect(gamesRecord.getSumOfPossibleGames(identifier)).toBe(8)

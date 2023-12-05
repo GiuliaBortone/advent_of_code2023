@@ -1,11 +1,13 @@
 import {Game} from "./game";
 import {GameSet} from "./gameSet";
+import {GamesRecord} from "./gamesRecord";
 
 export class InputParser {
-    public static translateToGames(input: string): Game[] {
+    public static translateToGamesRecord(input: string): GamesRecord {
         const inputLines = input.split("\n").filter(line => line)
+        const games: Game[] = inputLines.map(this.createGame)
 
-        return inputLines.map((line) => this.createGame(line));
+        return new GamesRecord(games)
     }
 
     private static createGame(stringGame: string) {
