@@ -13,7 +13,6 @@ const digitDictionary: DigitDictionary = {
     zero: '0',
 };
 
-const numbersSpelled = Array.of('zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine')
 
 function isANumber(character: string): boolean {
     return !isNaN(parseInt(character));
@@ -24,7 +23,6 @@ export function recoverCalibrationValueFromSingleRow(row: string): number {
 }
 
 function findFirstNumber(row: string) {
-
     for (let i = 0; i < row.length; i++) {
         if (findEquivalent(row, row.substring(0, i + 1), i)) {
             return findEquivalent(row, row.substring(0, i + 1), i)
@@ -50,6 +48,8 @@ function findEquivalent(row: string, subString: string, index: number) {
         return digitDictionary[containsSpelledNumber(subString)]
     }
 }
+
+const numbersSpelled = Array.of('zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine')
 
 function containsSpelledNumber(lettersSequence: string) {
     for (let i = 0; i < numbersSpelled.length; i++) {
