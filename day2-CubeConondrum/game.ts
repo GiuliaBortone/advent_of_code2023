@@ -16,4 +16,12 @@ export class Game {
     public getId(): number {
         return this.id
     }
+
+    public calculatePower(): number {
+        const redCubesMax = Math.max(...this.gameSets.map(set => set.redCubes))
+        const greenCubesMax = Math.max(...this.gameSets.map(set => set.greenCubes))
+        const blueCubesMax = Math.max(...this.gameSets.map(set => set.blueCubes))
+
+        return redCubesMax * greenCubesMax * blueCubesMax;
+    }
 }

@@ -15,7 +15,13 @@ export class GamesRecord {
         return possibleGames
             .map(game => game.getId())
             .reduce(function (a, b) {
-                return a + b;
-            });
+                return a + b
+            })
+    }
+
+    public getTotalPower(): number {
+        return this.games.map(game => game.calculatePower()).reduce(function (a, b) {
+            return a + b
+        })
     }
 }
