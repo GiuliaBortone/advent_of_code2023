@@ -12,7 +12,7 @@ export class InputParser {
 
     private static createGame(stringGame: string) {
         const gameIdAndSets = stringGame.split(":")
-        const gameId = parseInt(gameIdAndSets[0].charAt(gameIdAndSets[0].length - 1))
+        const gameId = parseInt(gameIdAndSets[0].match(/\d+/)![0])
 
         const gameSets = InputParser.createSets(gameIdAndSets[1])
 

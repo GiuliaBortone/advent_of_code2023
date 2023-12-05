@@ -1,6 +1,7 @@
 import {AcceptableGameIdentifier} from '../../day2-CubeConondrum/acceptableGameIdentifier'
 import {GamesRecord} from "../../day2-CubeConondrum/gamesRecord";
 import {InputParser} from "../../day2-CubeConondrum/inputParser";
+import {readFileSync} from "fs";
 
 describe("find the sum of ids of acceptable games in a games record", () => {
     test("correctly solves provided example", () => {
@@ -15,5 +16,15 @@ describe("find the sum of ids of acceptable games in a games record", () => {
         let identifier: AcceptableGameIdentifier = new AcceptableGameIdentifier(12, 13, 14)
 
         expect(gamesRecord.getSumOfPossibleGames(identifier)).toBe(8)
+    })
+
+    test("correctly solves provided input", () => {
+        const input = readFileSync('test/day2-CubeConondrum/input.txt', 'utf-8')
+
+        const gamesRecord: GamesRecord = InputParser.translateToGamesRecord(input)
+
+        let identifier: AcceptableGameIdentifier = new AcceptableGameIdentifier(12, 13, 14)
+
+        expect(gamesRecord.getSumOfPossibleGames(identifier)).toBe(2348)
     })
 })
