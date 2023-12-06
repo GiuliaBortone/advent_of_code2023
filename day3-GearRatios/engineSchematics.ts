@@ -1,11 +1,11 @@
 export class EngineSchematics {
-    private readonly engineSchematicLines: string[][];
+    private readonly engineSchematicMatrix: string[][]
 
     constructor(engineSchematicLines: string[][]) {
-        this.engineSchematicLines = engineSchematicLines;
+        this.engineSchematicMatrix = engineSchematicLines
     }
 
-    public getLineAt(lineIndex: number) {
-        return this.engineSchematicLines[lineIndex];
+    public getEngineMatrix() {
+        return this.engineSchematicMatrix
     }
 }
