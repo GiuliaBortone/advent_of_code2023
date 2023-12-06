@@ -23,7 +23,7 @@ function calculateSum(matrix: string[][]) {
     }
 
     let columnIndexFinder = (arr: string[], target: string) => {
-        return arr.findIndex(v => v.includes(target))
+        return arr.findIndex(v => v === target)
     }
 
     const rowIndex = rowIndexFinder(matrix, "*")
