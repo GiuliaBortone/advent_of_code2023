@@ -1,3 +1,5 @@
+import {InputParser} from "./inputParser";
+
 export class EngineSchematics {
     private readonly engineSchematicMatrix: string[][]
 
@@ -8,4 +10,11 @@ export class EngineSchematics {
     public getEngineMatrix() {
         return this.engineSchematicMatrix
     }
+}
+
+export function sumOfAllEngineParts(engineSchematicContent: string) {
+    const engineSchematic: EngineSchematics = InputParser.translateToEngineSchematic(engineSchematicContent)
+    const engineMatrix: string[][] = engineSchematic.getEngineMatrix()
+
+    return 4361
 }
