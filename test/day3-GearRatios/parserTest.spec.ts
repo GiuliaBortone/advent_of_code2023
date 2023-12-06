@@ -8,6 +8,6 @@ describe("parse input to engine schematic", () => {
 
         const engineSchematic: EngineSchematics = InputParser.translateToEngineSchematic(example)
 
-        expect(engineSchematic.getLineAt(0)).toStrictEqual(["4", "6", "7", ".", ".", "1", "1", "4", ".", "."])
+        expect(engineSchematic.getEngineMatrix()[0]).toStrictEqual(["4", "6", "7", ".", ".", "1", "1", "4", ".", "."])
     })
 })
