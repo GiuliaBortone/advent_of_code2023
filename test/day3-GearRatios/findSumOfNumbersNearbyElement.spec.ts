@@ -1,23 +1,6 @@
 import {Matrix} from "../../day3-GearRatios/matrix";
-
-test("find symbol coordinates", () => {
-    const example = [".", ".", ".", ".", ".", ".", ".", ".", ".", "."]
-    let stringMatrix: string[][] = []
-
-    for (let i = 0; i < 10; i++) {
-        const clone = Object.assign([], example)
-        stringMatrix.push(clone)
-    }
-
-    stringMatrix[1][2] = '1'
-    stringMatrix[2][3] = '*'
-
-    let matrix = new Matrix(stringMatrix)
-
-    const coordinates = matrix.findElement("*")
-
-    expect(coordinates).toStrictEqual({row: 2, column: 3})
-})
+import {findElement} from "../../day3-GearRatios/findElementInMatrix";
+import {findSumOfNumbersNearbySymbol} from "../../day3-GearRatios/findSumOfNumbersNearbyElement";
 
 test("find single number nearby symbol", () => {
     const example = [".", ".", ".", ".", ".", ".", ".", ".", ".", "."]
@@ -33,9 +16,9 @@ test("find single number nearby symbol", () => {
 
     let matrix = new Matrix(stringMatrix)
 
-    const coordinates = matrix.findElement("*")
+    const coordinates = findElement("*", matrix)
 
-    expect(matrix.findSumOfNumbersNearbySymbol(coordinates)).toBe(1)
+    expect(findSumOfNumbersNearbySymbol(coordinates, matrix)).toBe(1)
 })
 
 test("no symbol found returns -1, -1 and find sum returns -1", () => {
@@ -49,10 +32,10 @@ test("no symbol found returns -1, -1 and find sum returns -1", () => {
 
     let matrix = new Matrix(stringMatrix)
 
-    const coordinates = matrix.findElement("*")
+    const coordinates = findElement("*", matrix)
 
     expect(coordinates).toStrictEqual({row: -1, column: -1})
-    expect(matrix.findSumOfNumbersNearbySymbol(coordinates)).toBe(-1)
+    expect(findSumOfNumbersNearbySymbol(coordinates, matrix)).toBe(-1)
 })
 
 test("find sum of more than one number nearby symbol", () => {
@@ -70,9 +53,9 @@ test("find sum of more than one number nearby symbol", () => {
 
     let matrix = new Matrix(stringMatrix)
 
-    const coordinates = matrix.findElement("*")
+    const coordinates = findElement("*", matrix)
 
-    expect(matrix.findSumOfNumbersNearbySymbol(coordinates)).toBe(2)
+    expect(findSumOfNumbersNearbySymbol(coordinates, matrix)).toBe(2)
 })
 
 test("find number near symbol when number has more than one digit, not in its scope", () => {
@@ -91,9 +74,9 @@ test("find number near symbol when number has more than one digit, not in its sc
 
     let matrix = new Matrix(stringMatrix)
 
-    const coordinates = matrix.findElement("*")
+    const coordinates = findElement("*", matrix)
 
-    expect(matrix.findSumOfNumbersNearbySymbol(coordinates)).toBe(12)
+    expect(findSumOfNumbersNearbySymbol(coordinates, matrix)).toBe(12)
 })
 
 test("find number near symbol when number has more than one digit, but with some in its scope", () => {
@@ -112,7 +95,7 @@ test("find number near symbol when number has more than one digit, but with some
 
     let matrix = new Matrix(stringMatrix)
 
-    const coordinates = matrix.findElement("*")
+    const coordinates = findElement("*", matrix)
 
-    expect(matrix.findSumOfNumbersNearbySymbol(coordinates)).toBe(12)
+    expect(findSumOfNumbersNearbySymbol(coordinates, matrix)).toBe(12)
 })
