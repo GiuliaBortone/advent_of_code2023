@@ -9,7 +9,7 @@ export class PointsCalculator {
 
             const card: Card = new Card(this.getArrayFromString(winningNumbersAsString), this.getArrayFromString(cardNumbersAsString))
 
-            totalPoints += card.points()
+            totalPoints += this.pointsCalculatorWith(card.commonNumbers())
         })
 
         return totalPoints
@@ -17,5 +17,10 @@ export class PointsCalculator {
 
     private static getArrayFromString(numbersAsString: string): number[] {
         return numbersAsString.trim().split(' ').filter(number => number).map(Number);
+    }
+
+    private static pointsCalculatorWith(commonNumbers: number): number {
+        if (commonNumbers == 0) return 0
+        return Math.pow(2, commonNumbers - 1)
     }
 }

@@ -7,17 +7,7 @@ export class Card {
         this.cardNumbers = cardNumbers
     }
 
-    public points() {
-        let commonNumbers = this.findCommonNumbersQuantity()
-        return this.pointCalculator(commonNumbers);
-    }
-
-    private pointCalculator(commonNumbers: number) {
-        if (commonNumbers == 0) return 0
-        return Math.pow(2, commonNumbers - 1)
-    }
-
-    private findCommonNumbersQuantity() {
+    public commonNumbers() {
         let commonNumbers: number = 0
         this.cardNumbers.forEach((number) => {
             if (this.winningNumbers.includes(number)) commonNumbers++
